@@ -1,14 +1,71 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+
+* {
+  font-family: "Staatliches", cursive;
 }
 
-.App-header {
-  background-color: #282c34;
+.App {
+  text-align: center;
   min-height: 100vh;
+  background-color: #3c40c6;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+}
+.App .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.App-Header {
+  color: #fff;
+  font-size: 2rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.Results {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Results > * {
+  flex-grow: 1;
+}
+
+footer {
+  background-color: #0c2461;
+  padding: 1.2rem;
+  color: #cb4154;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+}
+
+footer > p > span {
+  color: #fff;
+  font-size: 1rem;
+}
+
+footer > p > span > a {
+  text-decoration: none;
+  color: inherit;
+  margin-left: 0.5rem;
+  padding: 0.2rem;
+}
+
+footer > p > span > a:hover {
+  color: #cb4154;
+  transition: ease-in 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+  .Results {
+    flex-direction: column;
+  }
 }

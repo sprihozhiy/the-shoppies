@@ -27,15 +27,39 @@
 .Search button {
   padding: 1.2rem 0.8rem;
   margin-left: 0.2rem;
-  border: 1px solid #d0cfce;
+  border: 1px solid #0c2461;
   outline: none;
   border-radius: 10px;
+  background-color: #0c2461;
+  color: #fff;
 }
 
 .Search button:hover {
   cursor: pointer;
   background-color: #cb4154;
   color: #fff;
-  transition: 0.4s ease;
-  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.38);
+  transition: 0.2s ease;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.4);
+  border: inherit;
+}
+
+.Search button:active {
+  background-color: #b52a3d;
+  box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.4);
+  border: inherit;
+}
+
+.Results {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Results > * {
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 1000px) {
+  .Results {
+    flex-direction: column;
+  }
 }

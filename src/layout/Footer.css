@@ -1,0 +1,24 @@
+footer {
+  background-color: #0c2461;
+  padding: 1.2rem;
+  color: #cb4154;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+}
+
+footer > p > span {
+  color: #fff;
+  font-size: 1rem;
+}
+
+footer > p > span > a {
+  text-decoration: none;
+  color: inherit;
+  margin-left: 0.5rem;
+  padding: 0.2rem;
+}
+
+footer > p > span > a:hover {
+  color: #cb4154;
+  transition: ease-in 0.3s;
+}

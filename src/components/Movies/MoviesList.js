@@ -3,13 +3,26 @@ import Movie from "./Movie";
 
 import "./MoviesList.css";
 
-function MoviesList() {
+function MoviesList(props) {
+  const list = props.list;
   return (
     <div className="Movies-List">
-      <h3>Movies List</h3>
-      <ul>
-        <Movie />
-      </ul>
+      <h3>Search Results:</h3>
+      {list.length === 0 ? (
+        <p>No results</p>
+      ) : (
+        <ul>
+          {list !== [] &&
+            list.map((movie) => (
+              <Movie
+                title={movie.Title}
+                id={movie.imdbID}
+                year={movie.Year}
+                key={movie.imdbID}
+              />
+            ))}
+        </ul>
+      )}
     </div>
   );
 }

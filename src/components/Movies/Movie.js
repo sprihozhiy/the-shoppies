@@ -1,10 +1,11 @@
 import React from "react";
 import "./Movie.css";
 
-function Movie() {
+function Movie(props) {
   return (
     <li>
-      <span>Movie Name</span> -<span>Year</span>
+      <span>{props.title} - </span>
+      <span>({props.year}) </span>
       <button>Nominate</button>
     </li>
   );

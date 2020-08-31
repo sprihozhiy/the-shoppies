@@ -9,31 +9,48 @@ import "./SearchMovies.css";
 
 function SearchMovies() {
   const [query, setQuery] = useState("");
+  const [foundMovies, setFoundMovies] = useState([]);
 
-  const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&t=Iron+Man`;
-  const getData = async (e) => {
-    e.preventDefault();
+  const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
+  const getData = async () => {
     try {
       const result = await axios.get(URL);
+      setFoundMovies(result.data.Search);
       console.log(result);
+      setQuery("");
     } catch (err) {
       console.log(err);
     }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getData();
+  };
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
 
   return (
-    <div className="Search">
-      <form>
-        <input type="text" className="Search-Bar" placeholder="Find Movie..." />
-        <button type="submit" onClick={getData}>
-          Search
-        </button>
-      </form>
+    <main>
+      <div className="Search">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="Search-Bar"
+            placeholder="Find Movie..."
+            autoComplete="off"
+            onChange={handleChange}
+            value={query}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
       <section className="Results">
-        <MoviesList />
+        <MoviesList list={foundMovies} />
         <Nominees />
       </section>
-    </div>
+    </main>
   );
 }
 

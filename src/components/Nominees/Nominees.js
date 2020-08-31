@@ -6,7 +6,7 @@ import "./Nominees.css";
 function Nominees() {
   return (
     <div className="Nominees">
-      <h3>Nominees</h3>
+      <h3>Nominees:</h3>
       <ul>
         <Nominee />
       </ul>

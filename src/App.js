@@ -9,9 +9,7 @@ function App() {
     <div className="App">
       <div className="wrapper">
         <Header />
-        <main>
-          <SearchMovies />
-        </main>
+        <SearchMovies />
       </div>
       <Footer />
     </div>

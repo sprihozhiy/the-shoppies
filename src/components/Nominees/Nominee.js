@@ -1,10 +1,11 @@
 import React from "react";
 import "./Nominee.css";
 
-function Nominee() {
+function Nominee(props) {
+  const { title } = props;
   return (
     <li>
-      <span>Movie Name</span> -<span>Year </span>
+      <span>{title}</span> -<span>Year </span>
       <button>Remove</button>
     </li>
   );

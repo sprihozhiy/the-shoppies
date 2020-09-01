@@ -10,6 +10,7 @@ import "./SearchMovies.css";
 function SearchMovies() {
   const [query, setQuery] = useState("");
   const [foundMovies, setFoundMovies] = useState([]);
+  const [nominated, setNominated] = useState([]);
 
   const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
   const getData = async () => {
@@ -31,6 +32,15 @@ function SearchMovies() {
     setQuery(e.target.value);
   };
 
+  const nominate = (newNominant) => {
+    if (nominated.length < 5) {
+      setNominated((nominated) => [...nominated, newNominant]);
+    } else {
+      console.log("you cannot add a new nominant");
+    }
+    // console.log(nominated);
+  };
+
   return (
     <main>
       <div className="Search">
@@ -47,8 +57,8 @@ function SearchMovies() {
         </form>
       </div>
       <section className="Results">
-        <MoviesList list={foundMovies} />
-        <Nominees />
+        <MoviesList list={foundMovies} nominate={nominate} />
+        <Nominees nominatedList={nominated} />
       </section>
     </main>
   );

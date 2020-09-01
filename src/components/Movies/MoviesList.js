@@ -1,10 +1,11 @@
 import React from "react";
 import Movie from "./Movie";
+import { v4 as uuidv4 } from "uuid";
 
 import "./MoviesList.css";
 
 function MoviesList(props) {
-  const list = props.list;
+  const { list, nominate } = props;
   return (
     <div className="Movies-List">
       <h3>Search Results:</h3>
@@ -18,7 +19,8 @@ function MoviesList(props) {
                 title={movie.Title}
                 id={movie.imdbID}
                 year={movie.Year}
-                key={movie.imdbID}
+                key={uuidv4()}
+                nominate={() => nominate(movie)}
               />
             ))}
         </ul>

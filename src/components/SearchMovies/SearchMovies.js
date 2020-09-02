@@ -9,14 +9,17 @@ import "./SearchMovies.css";
 
 function SearchMovies() {
   const [query, setQuery] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [foundMovies, setFoundMovies] = useState([]);
   const [nominated, setNominated] = useState([]);
+  // const [isNominated, setIsNominated] = useState(false);
 
   const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
   const getData = async () => {
     try {
       const result = await axios.get(URL);
       setFoundMovies(result.data.Search);
+      setSearchTerm(query);
       setQuery("");
     } catch (err) {
       console.log(err);
@@ -44,6 +47,10 @@ function SearchMovies() {
     setNominated(nominated.filter((x) => x.imdbID !== id));
   };
 
+  // const checkNomination = () => {
+  //   //add nomination button disabled/active
+  // };
+
   return (
     <main>
       <div className="Search">
@@ -60,7 +67,11 @@ function SearchMovies() {
         </form>
       </div>
       <section className="Results">
-        <MoviesList list={foundMovies} nominate={nominate} />
+        <MoviesList
+          list={foundMovies}
+          nominate={nominate}
+          searchTerm={searchTerm}
+        />
         <Nominees nominatedList={nominated} deleteNominate={deleteNominate} />
       </section>
     </main>

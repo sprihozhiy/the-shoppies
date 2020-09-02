@@ -13,15 +13,14 @@ function Nominees(props) {
         <p>No results</p>
       ) : (
         <ul>
-          {nominatedList !== [] &&
-            nominatedList.map((nominate) => (
-              <Nominee
-                title={nominate.Title}
-                id={nominate.imdbID}
-                key={uuidv4()}
-                deleteNominate={() => deleteNominate(nominate.imdbID)}
-              />
-            ))}
+          {nominatedList.map((nominate) => (
+            <Nominee
+              title={nominate.Title}
+              id={nominate.imdbID}
+              key={uuidv4()}
+              deleteNominate={() => deleteNominate(nominate.imdbID)}
+            />
+          ))}
         </ul>
       )}
     </div>

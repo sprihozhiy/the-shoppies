@@ -5,10 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import "./MoviesList.css";
 
 function MoviesList(props) {
-  const { list, nominate } = props;
+  const { list, nominate, searchTerm } = props;
   return (
     <div className="Movies-List">
-      <h3>Search Results:</h3>
+      <h3>Search Results: {searchTerm.length > 1 ? searchTerm : null}</h3>
       {list.length === 0 ? (
         <p>No results</p>
       ) : (

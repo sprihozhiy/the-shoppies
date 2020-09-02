@@ -17,7 +17,6 @@ function SearchMovies() {
     try {
       const result = await axios.get(URL);
       setFoundMovies(result.data.Search);
-      console.log(result);
       setQuery("");
     } catch (err) {
       console.log(err);
@@ -32,13 +31,17 @@ function SearchMovies() {
     setQuery(e.target.value);
   };
 
-  const nominate = (newNominant) => {
+  const nominate = (newNominate) => {
     if (nominated.length < 5) {
-      setNominated((nominated) => [...nominated, newNominant]);
+      setNominated((nominated) => [...nominated, newNominate]);
+      console.log(nominated);
     } else {
       console.log("you cannot add a new nominant");
     }
-    // console.log(nominated);
+  };
+
+  const deleteNominate = (id) => {
+    setNominated(nominated.filter((x) => x.imdbID !== id));
   };
 
   return (
@@ -58,7 +61,7 @@ function SearchMovies() {
       </div>
       <section className="Results">
         <MoviesList list={foundMovies} nominate={nominate} />
-        <Nominees nominatedList={nominated} />
+        <Nominees nominatedList={nominated} deleteNominate={deleteNominate} />
       </section>
     </main>
   );

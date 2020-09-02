@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import "./Nominees.css";
 
 function Nominees(props) {
-  const { nominatedList } = props;
+  const { nominatedList, deleteNominate } = props;
   return (
     <div className="Nominees">
       <h3>Nominees:</h3>
@@ -14,11 +14,12 @@ function Nominees(props) {
       ) : (
         <ul>
           {nominatedList !== [] &&
-            nominatedList.map((nominant) => (
+            nominatedList.map((nominate) => (
               <Nominee
-                title={nominant.Title}
-                id={nominant.imdbID}
+                title={nominate.Title}
+                id={nominate.imdbID}
                 key={uuidv4()}
+                deleteNominate={() => deleteNominate(nominate.imdbID)}
               />
             ))}
         </ul>

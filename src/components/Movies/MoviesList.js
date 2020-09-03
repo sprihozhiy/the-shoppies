@@ -21,6 +21,8 @@ function MoviesList(props) {
                 year={movie.Year}
                 key={uuidv4()}
                 nominate={() => nominate(movie)}
+                // checkNomination={() => checkNomination(movie.imdbID)}
+                // disabled={movie.disabled}
               />
             ))}
         </ul>

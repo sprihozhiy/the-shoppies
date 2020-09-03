@@ -8,6 +8,7 @@ function Movie(props) {
       <span>{title} - </span>
       <span>({year}) </span>
       <button onClick={nominate}>Nominate</button>
+      {/* <button onClick={checkNomination}>nominated?</button> */}
     </li>
   );
 }

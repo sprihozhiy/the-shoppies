@@ -12,6 +12,7 @@ function SearchMovies() {
   const [searchTerm, setSearchTerm] = useState("");
   const [foundMovies, setFoundMovies] = useState([]);
   const [nominated, setNominated] = useState([]);
+  // const [disabledNomination, setDisabledNomination] = useState(false);
   // const [isNominated, setIsNominated] = useState(false);
 
   const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
@@ -47,8 +48,9 @@ function SearchMovies() {
     setNominated(nominated.filter((x) => x.imdbID !== id));
   };
 
-  // const checkNomination = () => {
-  //   //add nomination button disabled/active
+  // const checkNomination = (id) => {
+  //   const isNominee = nominated.find((x) => x.imdbID === id);
+  //   console.log(isNominee);
   // };
 
   return (
@@ -71,6 +73,7 @@ function SearchMovies() {
           list={foundMovies}
           nominate={nominate}
           searchTerm={searchTerm}
+          // checkNomination={checkNomination}
         />
         <Nominees nominatedList={nominated} deleteNominate={deleteNominate} />
       </section>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import MoviesList from "../Movies/MoviesList";
 import Nominees from "../Nominees/Nominees";
@@ -12,13 +12,22 @@ function SearchMovies() {
   const [searchTerm, setSearchTerm] = useState("");
   const [foundMovies, setFoundMovies] = useState([]);
   const [nominated, setNominated] = useState([]);
-  // const [disabledNomination, setDisabledNomination] = useState(false);
-  // const [isNominated, setIsNominated] = useState(false);
+  const [disabledNomination, setDisabledNomination] = useState(false);
+  // const [handleDisabling, setHandleDisabling] = useState();
+
+  //Code below is for disabling a button to nominate
+  useEffect(() => {
+    if (disabledNomination === true) {
+      console.log("changed");
+      console.log(nominated);
+    }
+  });
 
   const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
   const getData = async () => {
     try {
       const result = await axios.get(URL);
+      console.log(result.data.Search);
       setFoundMovies(result.data.Search);
       setSearchTerm(query);
       setQuery("");
@@ -38,6 +47,7 @@ function SearchMovies() {
   const nominate = (newNominate) => {
     if (nominated.length < 5) {
       setNominated((nominated) => [...nominated, newNominate]);
+      setDisabledNomination(!disabledNomination);
       console.log(nominated);
     } else {
       console.log("you cannot add a new nominant");
@@ -48,9 +58,8 @@ function SearchMovies() {
     setNominated(nominated.filter((x) => x.imdbID !== id));
   };
 
-  // const checkNomination = (id) => {
-  //   const isNominee = nominated.find((x) => x.imdbID === id);
-  //   console.log(isNominee);
+  // const handleDisabling = () => {
+  //   setDisabledNomination(!disabledNomination);
   // };
 
   return (
@@ -73,7 +82,6 @@ function SearchMovies() {
           list={foundMovies}
           nominate={nominate}
           searchTerm={searchTerm}
-          // checkNomination={checkNomination}
         />
         <Nominees nominatedList={nominated} deleteNominate={deleteNominate} />
       </section>

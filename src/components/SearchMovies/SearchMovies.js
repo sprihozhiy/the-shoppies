@@ -12,23 +12,31 @@ function SearchMovies() {
   const [searchTerm, setSearchTerm] = useState("");
   const [foundMovies, setFoundMovies] = useState([]);
   const [nominated, setNominated] = useState([]);
-  const [disabledNomination, setDisabledNomination] = useState(false);
-  // const [handleDisabling, setHandleDisabling] = useState();
+  // const [isDisabled, setIsDisabled] = useState(false);
 
-  //Code below is for disabling a button to nominate
   useEffect(() => {
-    if (disabledNomination === true) {
-      console.log("changed");
-      console.log(nominated);
-    }
-  });
+    const newList = foundMovies.map((movie) =>
+      nominated.some((isNominated) => isNominated.imdbID === movie.imdbID)
+        ? {
+            ...movie,
+            ...{ disabledStatus: true },
+          }
+        : { ...movie, ...{ disabledStatus: false } }
+    );
+    // console.log(newList);
+    setFoundMovies(newList);
+    // console.log("something has been changed");
+  }, [nominated]);
 
   const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
   const getData = async () => {
     try {
-      const result = await axios.get(URL);
-      console.log(result.data.Search);
-      setFoundMovies(result.data.Search);
+      const response = await axios.get(URL);
+      const res = response.data.Search.map((i) => ({
+        ...i,
+        disabledStatus: false,
+      }));
+      setFoundMovies(res);
       setSearchTerm(query);
       setQuery("");
     } catch (err) {
@@ -47,20 +55,15 @@ function SearchMovies() {
   const nominate = (newNominate) => {
     if (nominated.length < 5) {
       setNominated((nominated) => [...nominated, newNominate]);
-      setDisabledNomination(!disabledNomination);
-      console.log(nominated);
     } else {
       console.log("you cannot add a new nominant");
     }
+    // changeStatus();
   };
 
   const deleteNominate = (id) => {
     setNominated(nominated.filter((x) => x.imdbID !== id));
   };
-
-  // const handleDisabling = () => {
-  //   setDisabledNomination(!disabledNomination);
-  // };
 
   return (
     <main>

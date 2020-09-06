@@ -21,7 +21,8 @@ function Nominees(props) {
             {nominatedList.map((nominate) => (
               <Nominee
                 title={nominate.Title}
-                id={nominate.imdbID}
+                year={nominate.Year}
+                imdbID={nominate.imdbID}
                 key={uuidv4()}
                 deleteNominate={() => deleteNominate(nominate.imdbID)}
               />

@@ -17,12 +17,11 @@ function MoviesList(props) {
             list.map((movie) => (
               <Movie
                 title={movie.Title}
-                id={movie.imdbID}
+                imdbID={movie.imdbID}
                 year={movie.Year}
                 key={uuidv4()}
                 nominate={() => nominate(movie)}
-                disabledStatus={movie.disabled}
-                // checkNomination={() => checkNomination(movie.imdbID)}
+                isDisabled={movie.disabledStatus}
               />
             ))}
         </ul>

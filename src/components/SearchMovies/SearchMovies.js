@@ -13,6 +13,7 @@ function SearchMovies() {
   const [foundMovies, setFoundMovies] = useState([]);
   const [nominated, setNominated] = useState([]);
   // const [isDisabled, setIsDisabled] = useState(false);
+  const [searchErr, setSearchErr] = useState("");
 
   useEffect(() => {
     const newList = foundMovies.map((movie) =>
@@ -28,8 +29,9 @@ function SearchMovies() {
     // console.log("something has been changed");
   }, [nominated]);
 
-  const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
   const getData = async () => {
+    setSearchErr("");
+    const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
     try {
       const response = await axios.get(URL);
       const res = response.data.Search.map((i) => ({
@@ -40,7 +42,9 @@ function SearchMovies() {
       setSearchTerm(query);
       setQuery("");
     } catch (err) {
-      console.log(err);
+      setSearchErr(`Nothing found for: ${query}! Please, try different term.`);
+      setQuery("");
+      // console.log(err);
     }
   };
   const handleSubmit = (e) => {
@@ -79,6 +83,7 @@ function SearchMovies() {
           />
           <button type="submit">Search</button>
         </form>
+        <h3>{searchErr.length === 0 ? null : searchErr}</h3>
       </div>
       <section className="Results">
         <MoviesList

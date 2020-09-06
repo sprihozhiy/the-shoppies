@@ -5,6 +5,8 @@ import Nominees from "../Nominees/Nominees";
 
 import axios from "axios";
 import API from "../../API/config";
+import ModalAlert from "../notifications/ModalAlert";
+
 import "./SearchMovies.css";
 
 function SearchMovies() {
@@ -24,9 +26,7 @@ function SearchMovies() {
           }
         : { ...movie, ...{ disabledStatus: false } }
     );
-    // console.log(newList);
     setFoundMovies(newList);
-    // console.log("something has been changed");
   }, [nominated]);
 
   const getData = async () => {
@@ -60,9 +60,8 @@ function SearchMovies() {
     if (nominated.length < 5) {
       setNominated((nominated) => [...nominated, newNominate]);
     } else {
-      console.log("you cannot add a new nominant");
+      ModalAlert();
     }
-    // changeStatus();
   };
 
   const deleteNominate = (id) => {

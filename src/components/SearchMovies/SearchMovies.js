@@ -14,7 +14,6 @@ function SearchMovies() {
   const [searchTerm, setSearchTerm] = useState("");
   const [foundMovies, setFoundMovies] = useState([]);
   const [nominated, setNominated] = useState([]);
-  // const [isDisabled, setIsDisabled] = useState(false);
   const [searchErr, setSearchErr] = useState("");
 
   useEffect(() => {
@@ -42,7 +41,14 @@ function SearchMovies() {
       setSearchTerm(query);
       setQuery("");
     } catch (err) {
-      setSearchErr(`Nothing found for: ${query}! Please, try different term.`);
+      if (query.length === 0) {
+        setSearchErr("You have not typed something. Please, try again!");
+      } else {
+        setSearchErr(
+          `Nothing found for: ${query}! Please, try different search term.`
+        );
+      }
+
       setQuery("");
       // console.log(err);
     }
@@ -75,14 +81,16 @@ function SearchMovies() {
           <input
             type="text"
             className="Search-Bar"
-            placeholder="Find Movie..."
+            placeholder="Find A Movie..."
             autoComplete="off"
             onChange={handleChange}
             value={query}
           />
           <button type="submit">Search</button>
         </form>
-        <h3>{searchErr.length === 0 ? null : searchErr}</h3>
+        <h3 className="errAlert">
+          {searchErr.length === 0 ? null : searchErr}
+        </h3>
       </div>
       <section className="Results">
         <MoviesList

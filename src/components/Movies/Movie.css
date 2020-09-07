@@ -1,7 +1,34 @@
-.red {
-  color: #ff0000;
+.Movie-item {
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
 }
 
-.black {
-  color: #000;
+.Movie-item > * {
+  width: 90%;
+}
+
+.Movie-item .col-btn {
+  width: 10%;
+}
+
+.nominated {
+  color: #4c4c4c;
+}
+
+.Movie-Btn:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .Movie-item > * {
+    width: 60%;
+  }
+
+  .Movie-item .col-btn {
+    width: 40%;
+    padding-top: 0.7rem;
+  }
 }

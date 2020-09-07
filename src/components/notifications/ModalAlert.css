@@ -1,14 +1,26 @@
 .modal-title {
-  color: red;
+  color: #cb4154;
 }
 
 .confirm-button-class {
   padding: 1.2rem 1.8rem;
   margin: 1rem;
-  border: 1px solid #0c2461;
+  border: none;
   outline: none;
   border-radius: 10px;
   background-color: #0c2461;
   color: #fff;
+}
+
+.confirm-button-class:hover {
   cursor: pointer;
+  background-color: #cb4154;
+  color: #fff;
+  transition: 0.2s ease;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+.confirm-button-class:active {
+  background-color: #b52a3d;
+  box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.4);
 }

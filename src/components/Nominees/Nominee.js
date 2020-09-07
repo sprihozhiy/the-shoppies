@@ -4,9 +4,16 @@ import "./Nominee.css";
 function Nominee(props) {
   const { title, year, deleteNominate } = props;
   return (
-    <li>
-      <span>{title}</span> - <span> ( {year} ) </span>
-      <button onClick={deleteNominate}>Remove</button>
+    <li className="Nominee-item">
+      <div className="col">
+        <span>{title} </span>
+        <span>({year})</span>
+      </div>
+      <div className="col col-btn">
+        <button onClick={deleteNominate} className="Nominee-Btn">
+          Remove
+        </button>
+      </div>
     </li>
   );
 }

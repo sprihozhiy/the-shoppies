@@ -1,0 +1,30 @@
+.Nominee-item {
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+}
+
+.Nominee-item > * {
+  width: 90%;
+}
+
+.Nominee-item .col-btn {
+  width: 10%;
+}
+
+.Nominee-Btn:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .Nominee-item > * {
+    width: 60%;
+  }
+
+  .Nominee-item .col-btn {
+    width: 40%;
+    padding-top: 0.7rem;
+  }
+}

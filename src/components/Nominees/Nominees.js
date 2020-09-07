@@ -7,7 +7,9 @@ import "./Nominees.css";
 function Nominees(props) {
   const { nominatedList, deleteNominate } = props;
   const successMessage = () => {
-    return <h4>Great! You've picked 5 nominates!</h4>;
+    return (
+      <h4 className="Nominees-alert">Great! You've picked 5 nominates!</h4>
+    );
   };
   return (
     <div className="Nominees">

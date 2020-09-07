@@ -1,7 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@font-face {
+  font-family: "Staatliches";
+  src: local("Staatliches"),
+    url(./fonts/Staatliches-Regular.ttf) format("truetype");
+}
 
 * {
-  font-family: "Staatliches", cursive;
+  font-family: "Staatliches", sans-serif;
 }
 
 .App {

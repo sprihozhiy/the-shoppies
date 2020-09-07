@@ -4,7 +4,9 @@ import "./Header.css";
 export default function Header() {
   return (
     <header className="App-Header">
-      <h1>The Shoppies</h1>
+      <h1>
+        <a href="/">The Shoppies</a>
+      </h1>
     </header>
   );
 }

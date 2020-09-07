@@ -7,7 +7,7 @@ const ModalAlert = () => {
   const MySwal = withReactContent(Swal);
 
   MySwal.fire({
-    title: <p>You have already added 5 nominees!</p>,
+    title: <p className="Modal-title">You have already added 5 nominees!</p>,
     text:
       "If you want to add this movie to the nominates you should revise your current nominees list.",
     showClass: {

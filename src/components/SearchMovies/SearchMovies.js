@@ -30,7 +30,7 @@ function SearchMovies() {
 
   const getData = async () => {
     setSearchErr("");
-    const URL = `http://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
+    const URL = `https://www.omdbapi.com/?apikey=${API.KEY}&s=${query}`;
     try {
       const response = await axios.get(URL);
       const res = response.data.Search.map((i) => ({
@@ -43,6 +43,7 @@ function SearchMovies() {
     } catch (err) {
       if (query.length === 0) {
         setSearchErr("You have not typed something. Please, try again!");
+        setFoundMovies([]);
       } else {
         setSearchErr(
           `Nothing found for: ${query}! Please, try different search term.`

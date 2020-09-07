@@ -1,4 +1,8 @@
 .App-Header {
-  color: #fff;
   font-size: 2rem;
+}
+
+.App-Header a {
+  text-decoration: none;
+  color: #fff;
 }

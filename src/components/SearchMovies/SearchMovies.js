@@ -42,7 +42,7 @@ function SearchMovies() {
       setQuery("");
     } catch (err) {
       if (query.length === 0) {
-        setSearchErr("You have not typed something. Please, try again!");
+        setSearchErr("You have not typed anything. Please, try again!");
         setFoundMovies([]);
       } else {
         setSearchErr(
